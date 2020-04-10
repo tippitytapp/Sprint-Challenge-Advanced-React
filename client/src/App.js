@@ -12,12 +12,14 @@ class App extends React.Component{
   };
 
 componentDidMount(){
-  axios.get(`http://localhost:5000/api/players`).then(response => {
-    console.log(response);
+  axios.get(`http://localhost:5000/api/players`).then(res => {
+    console.log(res);
     this.setState({
-      players: response
+      players: res
     })
-
+  })
+  .catch(error => {
+    console.log(`error received: `, error);
   })
 }
 
