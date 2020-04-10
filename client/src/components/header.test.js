@@ -1,5 +1,6 @@
 import React from "react";
 import {render, fireEvent} from "@testing-library/react";
+import '@testing-library/jest-dom/extend-expect';
 import Header from "./header";
 
 test('header is visible', () => {
@@ -22,7 +23,7 @@ test('darkmode button visible', () => {
 
 test('click darkmode', ()=>{
     //ARRANGE
-    const getByText = reander(<Header />)
+    const {getByText} = render(<Header />)
     const darkButton = getByText(/dark mode/i)
     //ACT
     fireEvent.click(darkButton)
