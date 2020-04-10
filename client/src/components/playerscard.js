@@ -4,7 +4,7 @@ import React from 'react';
 function PlayerCard (props) {
 
     return(
-        <div>
+        <div data-testid="playerdiv">
         {props.playerData.map((info) => (
           <div>
             <div key={info.id}>
