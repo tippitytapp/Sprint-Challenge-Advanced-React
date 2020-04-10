@@ -1,5 +1,5 @@
 import React from "react";
-import {render} from "@testing-library/react";
+import {render, fireEvent} from "@testing-library/react";
 import Header from "./header";
 
 test('header is visible', () => {
@@ -20,3 +20,10 @@ test('darkmode button visible', () => {
     expect(darkButton).toBeVisible();
 })
 
+test('click darkmode', ()=>{
+    //ARRANGE
+    const getByText = reander(<Header />)
+    const darkButton = getByText(/dark mode/i)
+    //ACT
+    fireEvent.click(darkButton)
+})
