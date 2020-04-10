@@ -1,21 +1,23 @@
 import React from 'react';
 import axios from "axios";
-import { response } from 'express';
+import PlayerCard from "./components/playerscard";
+import Header from "./components/header"
+import "./App.css";
 
 
 class App extends React.Component{
   constructor(){
     super();
     this.state={
-      players:[]
+      players:[],
     }
   };
 
 componentDidMount(){
   axios.get(`http://localhost:5000/api/players`).then(res => {
-    console.log(res);
+    console.log(res.data);
     this.setState({
-      players: res
+      players: res.data
     })
   })
   .catch(error => {
@@ -23,20 +25,14 @@ componentDidMount(){
   })
 }
 
+
   render(){
   return (
     <div className="App">
-      <h1>Players Information</h1>
-      <div className="playersCard">
-        {this.state.players.forEach((item, i) => (
-          <>
-            <h3>Name: {item.name}</h3>
-            <h4>Country: {item.country}</h4>
-            <h4>Searches: {item.searches}</h4>
-          </>
-        ))}
+      <Header />
+      <div className="playersCardDiv">
+      <PlayerCard playerData={this.state.players} />
       </div>
-       
     </div>
   );
 }
